@@ -1,0 +1,109 @@
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: fadeIn 2s ease-in-out;
+}
+  
+  /* Content Styling */
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 1200px;
+    border-radius: 15px;
+    
+  }
+  
+  /* Heading Section */
+  .heading-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: slideIn 1.5s ease-out;
+  }
+  
+  /* Logo Styling */
+  .heading-logo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    animation: logoBounce 2s infinite;
+  }
+  
+  /* Welcome Message */
+  .welcome-message {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  /* Main Message */
+  .main-message {
+    font-size: 2rem;
+    color: #0078d4;
+    margin: 10px 0;
+    animation: fadeInUp 1.2s ease-out;
+  }
+  
+  /* Intro Message */
+  .intro-message {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    animation: fadeInUp 1.5s ease-out;
+  }
+  
+  /* Animation Definitions */
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Slide-in animation */
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes logoBounce {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+  
+  /* Fade-up animation */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  
