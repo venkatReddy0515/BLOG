@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const User=require("./model");
 const exit=require("./../middle/Login")
-const bcrypt=require("bcrypt");
+const bcrypt=require("bcryptjs");
 
 
 const generateJwt=require("./../Token/jwtToken");
