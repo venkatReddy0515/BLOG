@@ -1,10 +1,15 @@
 import "./Style.css"
+import "./../App.css"
 import { useEffect, useState } from "react"
+import Axios from "axios"
 import Logo from "./../assets/logo.jpeg"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faThumbsUp,faComments} from "@fortawesome/free-solid-svg-icons";
+
 const isLocalStorageToken= () => {
     const token = localStorage.getItem("token");
 
-    if (!token) return true; // No token means expired or not available
+    if (!token) return true;
 
     try {
         const payload = JSON.parse(atob(token.split(".")[1]));
@@ -18,7 +23,23 @@ const isLocalStorageToken= () => {
 
 
 function Home(){
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true); // Add a loading state
     const [display,setDisplay]=useState();
+    const limit=5;
+    useEffect(() => {
+        // Fetch posts from the server
+        Axios.get("http://localhost:4000/post",{params:{ limit }})
+            .then((response) => {
+                setPosts(response.data);
+                setLoading(false);  // Set loading to false after data is fetched
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+                setLoading(false);  // Set loading to false in case of an error
+            });
+    }, []);
     useEffect(()=>{
         if (isLocalStorageToken()) {
             console.log("Token has expired.");
@@ -29,6 +50,7 @@ function Home(){
             setDisplay(username)
         }
     },[display])
+    
     
     
 
@@ -47,7 +69,39 @@ function Home(){
                         <p>This is a place where you can easily create and share blogs with the world. After registering or logging in, you'll gain full access to browse, read, and post blogs on various topics that interest you. Whether you're passionate about technology, lifestyle, travel, or personal experiences, this platform offers an easy-to-use space to express yourself and connect with a like-minded communit</p>
                     </div>
                 </div>
+                
             </div>
+
+            
+            {loading===true?<div className="loading"></div>:
+            
+                <div className="latest-post">
+                    <h1>Latest Post</h1>
+                    {posts.map((post,index)=>(
+                        <div className="post-1" key={index}>
+                            <div className="post-image-1">
+                            <img src={`data:image/jpeg;base64,${post.photo}`} alt="" />
+                            </div>
+                            <div className="info">
+                                <div className="heading">
+                                    <h1>{post.tittle}</h1>
+                                    <p>{post.content}</p>
+                                </div>
+
+                            </div>
+                            <div className="like-section">
+                            <FontAwesomeIcon icon={faThumbsUp} />
+                            <FontAwesomeIcon icon={faComments} />
+                            </div>
+                            
+
+                        </div>
+                    ))}
+                    
+                    
+            </div>
+            
+            }
         </div>
     )
 }

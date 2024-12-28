@@ -6,7 +6,7 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import Nav from './Components/Nav';
 import Post from './Components/Post';
-
+import Footer from "./Components/Fottter";
 import { useState } from "react";
 function App() {
     const [message,setMessage]=useState('venkat');
@@ -23,6 +23,7 @@ return(
                     <Route path='/login' element={<Login/>}></Route>
                     <Route path='/contact'element={<Contact/>}></Route>
                 </Routes>
+                <Footer/>
             </Router>
         </div>
     </>

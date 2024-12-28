@@ -10,8 +10,9 @@ const posts=multer.memoryStorage();
 const upload=multer({posts});
 
 router.get("/",async(req,res)=>{
+    const {limit}=req.query;
     try{
-        const post=await Post.find().populate("author","username").exec();
+        const post=await Post.find().populate("author","username").limit(limit).exec();
         return res.status(200).json(post)
     }
     catch (error) {

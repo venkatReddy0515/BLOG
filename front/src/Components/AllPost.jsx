@@ -4,11 +4,12 @@ import "./../App.css";
 
 function AllPost() {
     const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(true); // Add a loading state
+    const [loading, setLoading] = useState(true);
+    const limit=4;
 
     useEffect(() => {
         // Fetch posts from the server
-        Axios.get("http://localhost:4000/post")
+        Axios.get("http://localhost:4000/post",{params:{limit}})
             .then((response) => {
                 setPosts(response.data);
                 setLoading(false);  // Set loading to false after data is fetched
