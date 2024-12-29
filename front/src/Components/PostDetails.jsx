@@ -18,7 +18,7 @@ function PostDetails() {
   const [user,setUser]=useState("");
   console.log(state, id);
   useEffect(()=>{
-    Axios.get(`http://localhost:4000/comment/${state.post._id}`)
+    Axios.get(`https://blog-adh2.onrender.com/comment/${state.post._id}`)
     .then((response)=>{
       setComment(response.data);
       setLoading(false);
@@ -31,7 +31,7 @@ function PostDetails() {
   },[])
   const handleLike = () => {
     Axios.post(
-      "http://localhost:4000/api/like",
+      "https://blog-adh2.onrender.com/api/like",
       { post: state.post._id },
       {
         headers: {
@@ -48,7 +48,7 @@ function PostDetails() {
       });
   };
   const handleComment=()=>{
-    Axios.post("http://localhost:4000/comment",{content:comments,post:state.post._id},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
+    Axios.post("https://blog-adh2.onrender.com/comment",{content:comments,post:state.post._id},{headers:{authorization:`Bearer ${localStorage.getItem("token")}`}})
     .then((response)=>{
       console.log(response.data.exit);
       setComment((prev) => [...prev, { content: newComment, user: { username: user } }]);
