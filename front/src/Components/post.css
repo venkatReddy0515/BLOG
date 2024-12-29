@@ -1,0 +1,285 @@
+/* General Styling */
+
+
+/* Post Details Container */
+.post-details {
+    width: 90%;
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Heading */
+.p .heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Image Styling */
+.img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Section */
+.div-fields {
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.div-fields .content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+.div-fields .created,
+.div-fields .author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.div-fields h2 {
+    font-size: 1rem;
+    color: #888;
+    font-weight: 500;
+}
+
+.div-fields h5 {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Author Section */
+.author h1 {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 600;
+}
+
+.author h2 {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Likes and Comments Section */
+.fields {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.fields div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f4f4f4;
+    margin: 0 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.fields div:hover {
+    transform: translateY(-5px);
+    background-color: #eaeaea;
+}
+
+.fields h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #444;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.comment{
+    display: flex;
+    width: 85%;
+    border: none;
+    outline: none;
+    text-align: center;
+    height: 40px;
+}
+.send{
+    width: 70px;
+    background-color: coral;
+    height: auto;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+input:focus {
+    color: rgb(16, 16, 16);
+    outline: 2px solid violet;
+    box-shadow: 0 0 5px violet;
+}
+.list-comments{
+    width:90%;
+    margin: 2% 4%;
+    padding:2% 1%;
+    height:auto;
+    background-color: #efebeb;
+    border-radius: 15px;
+    box-shadow: 2px 4px 5px rgba(214, 210, 210, 0.2);
+}
+.filed-1{
+    padding:0.4%;
+    margin:1px;
+}
+.comments-section {
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensures the section uses full available width */
+  }
+  
+  .comments-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .comments-list {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .comment-item {
+    border-bottom: 1px solid #f1f1f1;
+    padding: 15px 0;
+    margin-bottom: 15px; /* Adds gap between single comments */
+  }
+  
+  .comment-item:last-child {
+    border-bottom: none;
+  }
+  
+  .comment-username {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .comment-content {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  .comment-date {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 10px;
+  }
+  
+  .no-comments {
+    color: #888;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+  }
+  
+  .add-comment {
+    margin-top: 30px;
+  }
+  
+  .comment-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    resize: vertical;
+  }
+  
+  .comment-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .comment-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .comment-input:focus,
+  .comment-button:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+/* Responsive Design */
+@media (max-width: 768px) {
+    .post-details {
+        padding: 1rem;
+    }
+
+    .p .heading {
+        font-size: 1.5rem;
+    }
+
+    .fields div {
+        margin: 0.5rem 0;
+    }
+}

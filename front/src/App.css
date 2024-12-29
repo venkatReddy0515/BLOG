@@ -75,7 +75,7 @@ body.light-theme {
     align-items: center;
     padding: 0;
     transition: 0.3s ;
-    margin-left: auto;
+
     overflow-x: hidden;
     transition: 0.2s;
 }
@@ -119,58 +119,7 @@ body.light-theme {
 .menu:hover{
     transform: scale(1.4);
 }
-.post-content {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    margin: 20px;
-}
 
-.post-content {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 40px; /* Add some space between posts */
-  }
-  
-  .post-item {
-    width: 22%; /* Adjust width so that four items fit in a row */
-    border: 1px solid #ddd; /* Add border for visual separation */
-    padding: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow for effect */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
-  }
-
-
-  .post-image {
-    width: 100%;
-    height: auto;
-    cursor: pointer;  /* Change cursor to pointer on hover */
-    transition: 1s transform ;
-  }
-  .post-image:hover{
-    transform: scale(01.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  h4{
-    padding:2% 1%;
-  }
-  
-  .post-item h2 {
-    font-weight: normal; /* Normal weight initially */
-    transition: font-weight 0.3s ease; /* Smooth transition for bold effect */
-  }
-  
-  .post-item p {
-    font-size: 14px; /* Smaller font size for content */
-    color: #666; /* Lighter color for content */
-    transition: font-size 0.3s ease; /* Smooth transition for font size */
-  }
-  
-
-/* Add this to your CSS file (App.css or similar) */
-
-  /* Add this to your CSS file */
 .loading {
     text-align: center;
     font-size: 20px;
@@ -205,6 +154,7 @@ body.light-theme {
 
 /* Grid layout for posts */
 .post-1 {
+    cursor: pointer;
     display: grid;
     grid-template-columns: 1fr 2fr; /* 1/3 for image, 2/3 for content */
     gap: 20px;
@@ -329,7 +279,92 @@ body.light-theme {
     color: #bbb;
 }
 
-/* Mobile responsive */
+.post-content{
+    width:97%;
+    padding:2% 5%;
+    margin:2%;
+    transform: 2s top;
+}
+.post-item{
+    display: flex;
+    padding:2% 3%;
+    margin: 2%;
+    gap:40px;
+    align-items: justify;
+}
+.font-info,.post-heading{
+    color:tomato;
+    font-size: 1.7rem;
+
+}
+
+.post-item img{
+    width: 350px;
+    height:230px;
+    border-radius: 4%;
+    box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 2s;
+}
+.post-item img:hover{
+    transform: translateY(-20px);
+}
+.created{
+    text-align: center;
+    font-size: 1.1rem;
+    color:#7a7171
+}
+.seemore{
+    margin-top: 2%;
+    padding:2% 3%;
+    cursor: pointer;
+    color:rgb(17, 128, 218);
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+.prev, .next {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.prev:disabled, .next:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.prev:hover:not(:disabled), .next:hover:not(:disabled) {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.sap {
+    padding: 0 15px;
+}
+
+.page-num {
+    font-weight: 600;
+    color: #333;
+}
+
 @media (max-width: 768px) {
     .footer .footer-content {
         flex-direction: column;
@@ -400,5 +435,28 @@ body.light-theme {
     padding:2% 3%;
     margin:2%;
     }
+    .post-content{
+        width:100%;
+        padding:1% 2%;
+        margin:1% 2%;
+    }
+    .post-item img{
+        width:270px;
+        height:180px;
+
+    }
+    .post-item{
+        flex-direction: column;
+    }
+    .font-info,.post-heading{
+        color:tomato;
+        font-size: 1.2rem;
     
+    }
+    .post-content{
+        text-align: justify;
+        padding:1%;
+        margin:4px;
+
+    }
 }

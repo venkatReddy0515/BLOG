@@ -1,8 +1,9 @@
 import "./../index.css";
 import { useState } from "react";
 import Axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 function Post() {
+  const navigate=useNavigate();
   const [tittle, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [photo, setImage] = useState(null);

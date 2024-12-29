@@ -8,8 +8,8 @@ import Nav from './Components/Nav';
 import Post from './Components/Post';
 import Footer from "./Components/Fottter";
 import { useState } from "react";
+import PostDetails from "./Components/PostDetails"
 function App() {
-    const [message,setMessage]=useState('venkat');
 return(
     <>
         <div>
@@ -21,7 +21,7 @@ return(
                     <Route path='/post'element={<Post />}></Route>
                     <Route path='/allpost'element={<AllPost />}></Route>
                     <Route path='/login' element={<Login/>}></Route>
-                    <Route path='/contact'element={<Contact/>}></Route>
+                    <Route path="/path/:id"element={<PostDetails/>}></Route>
                 </Routes>
                 <Footer/>
             </Router>

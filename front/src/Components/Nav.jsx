@@ -50,7 +50,7 @@ const handleClose = () => {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/allpost">All Posts</Link></li>
               <li><Link to="/post">Post</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
+              
               <li><Link to="/login">Login/Register</Link></li>
             </ul>
           </nav>

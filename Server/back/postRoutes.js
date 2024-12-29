@@ -10,10 +10,18 @@ const posts=multer.memoryStorage();
 const upload=multer({posts});
 
 router.get("/",async(req,res)=>{
-    const {limit}=req.query;
+    const {limit,currentPage}=req.query;
+    console.log(limit,currentPage);
+    const skip=(currentPage-1)*limit;
     try{
-        const post=await Post.find().populate("author","username").limit(limit).exec();
-        return res.status(200).json(post)
+        const posts = await Post.find()
+        .populate("author", "username")
+        .skip(skip)
+        .limit(parseInt(limit))
+        .exec();
+        const count=await Post.countDocuments();
+        console.log(posts)
+        return res.status(200).json({posts,count,currentPage:parseInt(currentPage)})
     }
     catch (error) {
         res.status(500).json({ error: "Error fetching posts", details: error.message });
@@ -23,7 +31,7 @@ router.post("/", authorization, upload.single("image"), async (req, res) => {
     const { tittle, content } = req.body;
     const createdAt = new Date();  // Use current date as creation date
 
-    // Check if the file exists and convert it to base64
+
     let imageBase64 = null;
     if (req.file) {
         imageBase64 = req.file.buffer.toString("base64");

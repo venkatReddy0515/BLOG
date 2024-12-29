@@ -3,7 +3,7 @@ const Like=new mongoose.Schema({
     user:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
-        require:true
+        require:true,
     },
     post:{
         type:mongoose.Schema.Types.ObjectId,
@@ -17,4 +17,4 @@ const Like=new mongoose.Schema({
 
 
 })
-module.export=mongoose.model("Like",Like);
+module.exports=mongoose.model("Like",Like);

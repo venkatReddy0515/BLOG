@@ -1,25 +1,55 @@
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import "./../App.css";
+import { useNavigate } from "react-router-dom";
 
 function AllPost() {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
-    const limit=4;
+    const [currentPages, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const limit = 4;
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        // Fetch posts from the server
-        Axios.get("http://localhost:4000/post",{params:{limit}})
+    const get = (currentPage) => {
+        Axios.get("http://localhost:4000/post", { params: { currentPage, limit } })
             .then((response) => {
-                setPosts(response.data);
-                setLoading(false);  // Set loading to false after data is fetched
+                setPosts(response.data.posts);
+                setCurrentPage(response.data.currentPage);
+                setTotalPages(Math.ceil(response.data.count / limit));
+                setLoading(false);
                 console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);
-                setLoading(false);  // Set loading to false in case of an error
+                setLoading(false); // Set loading to false in case of an error
             });
-    }, []);
+    };
+
+    useEffect(() => {
+        get(currentPages);
+    }, [currentPages]);
+
+    const handlePost = (index) => {
+        console.log(posts[index]);
+        const post = posts[index];
+        console.log(post);
+        navigate(`/path/${post._id}`, { state: { post: posts[index] } });
+    };
+
+    const handlePrev = () => {
+        if (currentPages > 1) {
+            setCurrentPage(currentPages - 1);
+            setLoading(true);
+        }
+    };
+
+    const handleNext = () => {
+        if (currentPages < totalPages) {
+            setCurrentPage(currentPages + 1);
+            setLoading(true);
+        }
+    };
 
     if (loading) {
         // Show a loading indicator while data is being fetched
@@ -31,19 +61,34 @@ function AllPost() {
             <div className="post-content">
                 {posts.map((post, index) => (
                     <div key={index} className="post-item">
-                        {/* Check if photo exists and set it as a base64 encoded string */}
                         {post.photo && (
-                            <img 
+                            <img
                                 src={`data:image/jpeg;base64,${post.photo}`}
                                 alt={post.tittle}
                                 className="post-image"
                             />
                         )}
-                        <h4>{post.tittle}</h4>
-                        <p>{post.content}</p>
-                        <h5><span>{post.author.username}</span></h5>
+                        <div className="post-info">
+                            <h4 className="post-heading">{post.tittle}</h4>
+                            <p className="post-content">{post.content}</p>
+                            <h5 className="created">Created By: <span>{post.author.username}</span></h5>
+                            <h4 onClick={() => handlePost(index)} className="seemore"><span>See More </span></h4>
+                        </div>
                     </div>
                 ))}
+            </div>
+            <div className="pagination">
+                <div className="details">
+                    <button className="prev" disabled={currentPages === 1} onClick={handlePrev}>
+                        Previous
+                    </button>
+                    <div className="sap">
+                        <span className="page-num">{currentPages} OF {totalPages}</span>
+                    </div>
+                    <button className="next" disabled={currentPages === totalPages} onClick={handleNext}>
+                        Next
+                    </button>
+                </div>
             </div>
         </div>
     );

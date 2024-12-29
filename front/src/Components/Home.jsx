@@ -5,7 +5,7 @@ import Axios from "axios"
 import Logo from "./../assets/logo.jpeg"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faThumbsUp,faComments} from "@fortawesome/free-solid-svg-icons";
-
+import { Navigate, useNavigate } from "react-router-dom"
 const isLocalStorageToken= () => {
     const token = localStorage.getItem("token");
 
@@ -23,16 +23,17 @@ const isLocalStorageToken= () => {
 
 
 function Home(){
+    const navigate=useNavigate();
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true); // Add a loading state
     const [display,setDisplay]=useState();
     const limit=5;
     useEffect(() => {
         // Fetch posts from the server
-        Axios.get("http://localhost:4000/post",{params:{ limit }})
+        Axios.get("http://localhost:4000/post",{params:{ limit ,currentPage:1}})
             .then((response) => {
-                setPosts(response.data);
-                setLoading(false);  // Set loading to false after data is fetched
+                setPosts(response.data.posts);
+                setLoading(false);
                 console.log(response.data);
             })
             .catch((error) => {
@@ -51,7 +52,12 @@ function Home(){
         }
     },[display])
     
-    
+    const handlepost=(index)=>{
+        console.log(posts[index]);
+        const post=posts[index];
+        console.log(post);
+        navigate(`/path/${post._id}`,{state:{post:posts[index]}})
+    }
     
 
     return(
@@ -78,7 +84,7 @@ function Home(){
                 <div className="latest-post">
                     <h1>Latest Post</h1>
                     {posts.map((post,index)=>(
-                        <div className="post-1" key={index}>
+                        <div className="post-1" key={index} onClick={()=>handlepost(index)}>
                             <div className="post-image-1">
                             <img src={`data:image/jpeg;base64,${post.photo}`} alt="" />
                             </div>
@@ -88,10 +94,6 @@ function Home(){
                                     <p>{post.content}</p>
                                 </div>
 
-                            </div>
-                            <div className="like-section">
-                            <FontAwesomeIcon icon={faThumbsUp} />
-                            <FontAwesomeIcon icon={faComments} />
                             </div>
                             
 
