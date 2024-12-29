@@ -12,7 +12,7 @@ function AllPost() {
     const navigate = useNavigate();
 
     const get = (currentPage) => {
-        Axios.get("http://localhost:4000/post", { params: { currentPage, limit } })
+        Axios.get("https://blog-adh2.onrender.com/post", { params: { currentPage, limit } })
             .then((response) => {
                 setPosts(response.data.posts);
                 setCurrentPage(response.data.currentPage);
