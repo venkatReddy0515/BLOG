@@ -34,7 +34,7 @@ function Post() {
       return;
     }
 
-    Axios.post("http://localhost:4000/post",formData, {
+    Axios.post("https://blog-adh2.onrender.com/post",formData, {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
