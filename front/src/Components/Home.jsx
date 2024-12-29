@@ -30,7 +30,7 @@ function Home(){
     const limit=5;
     useEffect(() => {
         // Fetch posts from the server
-        Axios.get("http://localhost:4000/post",{params:{ limit ,currentPage:1}})
+        Axios.get("https://blog-adh2.onrender.com/post",{params:{ limit ,currentPage:1}})
             .then((response) => {
                 setPosts(response.data.posts);
                 setLoading(false);
