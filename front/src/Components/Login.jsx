@@ -17,7 +17,7 @@ function Login() {
 
     const handleLoginForm = (e) => {
         e.preventDefault();  // Prevent page reload on form submit
-        Axios.post("http://localhost:4000/blog/login", { email, password })
+        Axios.post("https://blog-adh2.onrender.com/blog/login", { email, password })
             .then((response) => {
                 console.log(response);
                 localStorage.setItem("token", response.data.token);
@@ -31,7 +31,7 @@ function Login() {
 
     const handleSign = (e) => {
         e.preventDefault();  // Prevent page reload on form submit
-        Axios.post("http://localhost:4000/blog/sign", { username: userName, email, password })
+        Axios.post("https://blog-adh2.onrender.com/blog/sign", { username: userName, email, password })
             .then((response) => {
                 console.log(response);
                 localStorage.setItem("token", response.data.token);
